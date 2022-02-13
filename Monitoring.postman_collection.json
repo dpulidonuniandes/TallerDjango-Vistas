@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1d9a3221-6183-4de0-a3e1-f80a0e0a3c17",
+		"_postman_id": "fba5b573-3617-4f36-89c8-d2ea3ae890d7",
 		"name": "Monitoring",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -136,15 +136,6 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{host}}:{{port}}{{api_path}}/variables",
 							"host": [
@@ -204,15 +195,6 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{host}}:{{port}}{{api_path}}/variables?id=3",
 							"host": [
@@ -361,9 +343,16 @@
 		},
 		{
 			"name": "Retrive Variable",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{host}}:{{port}}{{api_path}}/variables/1",
 					"host": [
@@ -431,6 +420,73 @@
 					"body": "[\n    {\n        \"model\": \"variables.variable\",\n        \"pk\": 3,\n        \"fields\": {\n            \"name\": \"New Var\"\n        }\n    }\n]"
 				}
 			]
+		},
+		{
+			"name": "Create Measurement",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"variable\": \"Temperatura\",\r\n    \"value\": 30,\r\n    \"unit\": \"Celcius\",\r\n    \"place\": \"Bogota\",\r\n    \"dateTime\": \"13-01-2022\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Variables",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update Variable",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"variable\": \"New Var\",\r\n    \"value\": 35,\r\n    \"unit\": \"Celcius\",\r\n    \"place\": \"Bogota\",\r\n    \"dateTime\": \"13-01-2022\"\r\n}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Variable",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -456,7 +512,7 @@
 	"variable": [
 		{
 			"key": "host",
-			"value": "http://127.0.0.1"
+			"value": "http://localhost"
 		},
 		{
 			"key": "port",
